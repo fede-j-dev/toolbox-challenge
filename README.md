@@ -1,4 +1,4 @@
-Instrucciones para hacer correr el proyecto:
+<<<<<<<<INSTRUCCIONES PARA HACER CORRER EL PROYECTO>>>>>>>>
 
 Servidor:
 
@@ -7,6 +7,7 @@ Abrir la terminal y situarse en la carpeta “server”
 Ingresar el comando “npm install”
 
 Ingresar el comando “npm start” (Versión de Node 14)
+
 
 Cliente:
 
