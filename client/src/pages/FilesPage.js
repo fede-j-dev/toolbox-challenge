@@ -1,5 +1,5 @@
 //React
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 //Redux
 import { useSelector, useDispatch } from "react-redux";
@@ -21,7 +21,6 @@ function FilesPage() {
   //Redux
   const dispatch = useDispatch();
   const selectedFile = useSelector((state) => state.selectedFile);
-  const currentLines = useSelector((state) => state.currentLines);
 
   // State hooks
   const [filesLines, setFilesLines] = useState([]);
@@ -52,7 +51,7 @@ function FilesPage() {
     }
   }, [selectedFile]);
 
-  function formatData(data) {
+  const formatData = useCallback((data) => {
     let filesLines = [];
     data.forEach((file) => {
       file.lines?.forEach((line) => {
@@ -60,7 +59,7 @@ function FilesPage() {
       });
     });
     setFilesLines(filesLines);
-  }
+  }, []);
 
   return (
     <div className="App">

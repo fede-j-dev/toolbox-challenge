@@ -24,12 +24,15 @@ function FilesPagination({ filesLines }) {
 
   //Update currentLines(Files Lines that should be displayed on the table, depending on pagination page)
   useEffect(() => {
+    dispatch(updateCurrentLines(getCurrentLines()));
+  }, [filesLines, currentPage]);
+
+  function getCurrentLines() {
     const indexOfLastLine = currentPage * maxLinesPerPage;
     const indexOfFirstLine = indexOfLastLine - maxLinesPerPage;
     const currentLines = filesLines.slice(indexOfFirstLine, indexOfLastLine);
-
-    dispatch(updateCurrentLines(currentLines));
-  }, [filesLines, currentPage]);
+    return currentLines;
+  }
 
   //Build pagination items
   for (let number = 1; number <= totalPages; number++) {

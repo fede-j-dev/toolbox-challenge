@@ -2,6 +2,7 @@ const formatFileData = (data) => {
   if (data.code) {
     return;
   }
+
   const props = ["hex", "number", "text"];
   validatedFiles = [];
 
@@ -22,12 +23,14 @@ const formatFileData = (data) => {
     return typeof file[props[2]] === "string";
   };
 
-  data.forEach((file) => {
-    //Delete file prop. It is not necessary.
+  // Iterate over each file object in the data array
+  for (const file of data) {
+    // Delete the file prop if it exists
     if (file.file) {
       delete file.file;
     }
-    //Check if validations are ok
+
+    // If all validations pass, add the file object to the validatedFiles array
     if (
       fileHasAllProps(file) &&
       hexValidation(file) &&
@@ -36,7 +39,8 @@ const formatFileData = (data) => {
     ) {
       validatedFiles.push(file);
     }
-  });
+  }
+
   return validatedFiles;
 };
 

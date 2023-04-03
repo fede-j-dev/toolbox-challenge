@@ -27,13 +27,13 @@ function FilesTable() {
           </tr>
         </thead>
         <tbody>
-          {currentLines.map((line, index) => {
+          {currentLines.map(({ file, text, number, hex }, index) => {
             return (
               <tr key={index}>
-                <td>{line.file}</td>
-                <td>{line.text}</td>
-                <td>{line.number}</td>
-                <td>{line.hex}</td>
+                <td>{file}</td>
+                <td>{text}</td>
+                <td>{number}</td>
+                <td>{hex}</td>
               </tr>
             );
           })}
